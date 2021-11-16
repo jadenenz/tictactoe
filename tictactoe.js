@@ -1,12 +1,14 @@
+let clickedFlag = false;
+
 const gameBoard = (() => { //module
-    const boardArray = ['x','o','x','o','x','o','x','o','x'];
+    const boardArray = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
     const generateBoard = () => {
         const boardContainer = document.querySelector('.boardContainer');
-        const div = document.createElement('div');
         for (let i = 0; i < (boardArray.length); i++){
-            boardContainer.appendChild(div);
+            let div = document.createElement('div');
+            div.setAttribute('class', 'gridDiv')
             div.innerHTML = boardArray[i];
-            console.log(i)
+            boardContainer.appendChild(div);
         }
     }
     return {
@@ -15,8 +17,27 @@ const gameBoard = (() => { //module
     };
 })();
 
+// just added data indeces, need to update the array using data index in order
+//to make a function called after the if else statements to check for a winner
+
 const gameController = (() => { //module
-    const markSpace = () => console.log('idk') //change clicked on array space to either x or o, depending on who's turn it is
+    const markSpace = () => {
+        let div = document.querySelectorAll('.gridDiv');
+        div.forEach((element,index) => {
+            element.setAttribute('data-index', index)
+            element.addEventListener('click', function(e)  {
+                if (element.innerText === '') {
+                    if (clickedFlag === false){
+                        clickedFlag = true;
+                        element.innerText = 'X'
+                    } else {
+                        clickedFlag = false;
+                        element.innerText = 'O'
+                    }
+                }
+            });
+        })
+    }
     const resetBoard = () => console.log('idk') //makes all the array spaces blank again
     return {
         markSpace,
@@ -30,4 +51,5 @@ const Player = (name) => { //factory function
 }
 
 gameBoard.generateBoard();
+gameController.markSpace();
 
