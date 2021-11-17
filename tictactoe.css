@@ -8,7 +8,9 @@ body {
     min-height: 100vh;
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .boardContainer {
@@ -36,4 +38,11 @@ body {
 
 .gridDiv:hover {
     background-color: lightgrey;
+}
+
+#btn {
+    font-size: 2em;
+    padding: 10px;
+    border-radius: 100000px;
+    border: none;
 }
