@@ -13,7 +13,7 @@ body {
 
 .boardContainer {
     display: grid;
-    border:10px solid black;
+    border:10px solid bisque;
     width: 50vh;
     height: 50vh;
     grid-template-columns: 1fr 1fr 1fr;
@@ -32,4 +32,8 @@ body {
     align-items: center;
     user-select: none;
     
+}
+
+.gridDiv:hover {
+    background-color: lightgrey;
 }
